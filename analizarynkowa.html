@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografika: Strategia Marketingowa SAP B1 w Polsce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-node {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 4px solid #f97316;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-node::before {
+            content: '●';
+            position: absolute;
+            left: -11px;
+            top: 0;
+            color: #f97316;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<!-- 
+Chosen Palette: Vibrant Tech (Blue-700, Orange-500, Teal-600, Slate-900)
+Application Structure Plan: The infographic is structured as a vertical scrollable narrative. It starts with the "Hook" (market context and KPIs), moves into "Comparison" (radar chart of CompuTec vs Competitors), analyzes "Trends" (budget and conversion charts), and concludes with "Strategy" (a CSS-based flowchart of the new action plan). This structure takes the user from high-level context down to actionable steps logically.
+Visualization & Content Choices: 
+1. Key Metrics -> Inform -> Big Number Cards -> High impact HTML/CSS styling.
+2. Competitor Benchmarking -> Compare -> Radar Chart (Chart.js) -> Best for multivariable gap analysis.
+3. Budget Allocation -> Organize -> Doughnut Chart (Chart.js) -> Shows part-to-whole clearly.
+4. Channel Effectiveness -> Compare -> Horizontal Bar Chart (Chart.js) -> Easy to read ranking of categories.
+5. Strategic Blueprint -> Organize -> CSS Timeline Flow -> No SVG/Mermaid used, pure structured HTML/CSS.
+CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+-->
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">Transformacja Marketingowa: <span class="text-blue-700">Ekosystem SAP B1</span></h1>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">Strategiczna analiza krajobrazu konkurencyjnego w Polsce oraz mapa drogowa dla firmy CompuTec w celu dominacji w niszy rozwiązań ERP dla produkcji.</p>
+        </header>
+
+        <section class="mb-20">
+            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-blue-600">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">&#128200; Krajobraz Rynkowy 2026</h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">Polska branża ERP dla segmentu MŚP przechodzi ewolucję. Klienci podejmują decyzje w oparciu o samodzielny research i edukację, odrzucając tradycyjne, agresywne metody sprzedaży. Poniższe wskaźniki ilustrują tę zmianę paradygmatu zakupowego.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="metric-card rounded-xl shadow-lg p-6 text-center">
+                        <div class="text-4xl mb-2">&#128269;</div>
+                        <div class="text-5xl font-bold mb-2">72%</div>
+                        <div class="text-sm font-semibold opacity-90 uppercase tracking-wide">Decyzji zakupowych B2B</div>
+                        <div class="text-xs opacity-75 mt-2">Jest podejmowanych przed pierwszym kontaktem z handlowcem.</div>
+                    </div>
+                    <div class="metric-card rounded-xl shadow-lg p-6 text-center" style="background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);">
+                        <div class="text-4xl mb-2">&#128187;</div>
+                        <div class="text-5xl font-bold mb-2">3.5x</div>
+                        <div class="text-sm font-semibold opacity-90 uppercase tracking-wide">Wyższy ROI</div>
+                        <div class="text-xs opacity-75 mt-2">Z działań Content Marketingowych w porównaniu do reklam Paid Ads.</div>
+                    </div>
+                    <div class="metric-card rounded-xl shadow-lg p-6 text-center" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
+                        <div class="text-4xl mb-2">&#11088;</div>
+                        <div class="text-5xl font-bold mb-2">Nr 1</div>
+                        <div class="text-sm font-semibold opacity-90 uppercase tracking-wide">Przewaga CompuTec</div>
+                        <div class="text-xs opacity-75 mt-2">Własne rozwiązania IP (ProcessForce, PDC) stanowiące potężny unikalny wyróżnik.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-orange-500">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">&#9876;&#65039; Benchmarking Konkurencji</h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">Analiza aktywności głównych graczy na rynku (np. Altab, Supemis) w porównaniu do obecnych działań CompuTec. Wykres ukazuje istotną lukę w obszarze widoczności online i budowania wizerunku, przy jednoczesnej druzgocącej przewadze technologicznej CompuTec.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4">Wnioski z analizy:</h3>
+                        <ul class="space-y-4">
+                            <li class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                <strong class="text-orange-600 block mb-1">&#128680; Deficyt Social Sellingu:</strong> Konkurencja agresywnie wykorzystuje LinkedIn do budowania relacji i marek osobistych ekspertów. CompuTec opiera się na komunikacji korporacyjnej.
+                            </li>
+                            <li class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                <strong class="text-blue-600 block mb-1">&#128221; Dominacja Treści (SEO):</strong> Konkurenci inwestują w blogi eksperckie, poradniki KSeF i studia przypadków (Case Studies), przechwytując ruch z wyszukiwarek na wczesnym etapie lejka.
+                            </li>
+                            <li class="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                <strong class="text-teal-600 block mb-1">&#128640; Niewykorzystany Potencjał IP:</strong> Niedościgniona przewaga CompuTec (ProcessForce) wymaga lepszego "opakowania" marketingowego, skupionego na korzyściach biznesowych zamiast list funkcji.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="bg-white rounded-2xl shadow-md p-8 border-t-4 border-teal-600">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">&#128202; Analiza Kanałów i Skuteczności</h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">Zrozumienie, gdzie rynek lokuje budżety marketingowe i które z tych inwestycji generują faktyczne konwersje, jest kluczowe dla optymalizacji wydatków CompuTec.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-center font-bold text-slate-700 mb-2">Alokacja Budżetu Marketingowego B2B (ERP)</h3>
+                        <p class="text-center text-sm text-slate-500 mb-6">Procentowy podział wydatków wg kanałów</p>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="doughnutChart"></canvas>
+                        </div>
+                        <p class="mt-4 text-sm text-slate-600 text-center">Inwestycje płyną przede wszystkim w stronę wartościowych treści edukacyjnych i bezpośredniego kontaktu eksperckiego.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-center font-bold text-slate-700 mb-2">Skuteczność Konwersji (Lead -> Szansa Sprzedaży)</h3>
+                        <p class="text-center text-sm text-slate-500 mb-6">Procent leadów kwalifikujących się do dalszego procesu</p>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="barChart"></canvas>
+                        </div>
+                        <p class="mt-4 text-sm text-slate-600 text-center">Najwyższą jakość generują rekomendacje oraz ruch z dobrze spozycjonowanych, specjalistycznych artykułów.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <div class="bg-slate-900 rounded-2xl shadow-xl p-8 text-white">
+                <h2 class="text-2xl font-bold mb-4 text-orange-400">&#128161; Strategiczny Blueprint dla CompuTec</h2>
+                <p class="text-slate-300 mb-10 leading-relaxed">Zalecana ewolucja działań od komunikacji technicznej w stronę strategii "Thought Leadership" skupionej wokół potrzeb branży produkcyjnej.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <div class="timeline-node">
+                        <h3 class="text-xl font-bold text-white mb-2">1. Ewolucja Przekazu (Value Proposition)</h3>
+                        <p class="text-slate-400 text-sm">Zmiana narracji wokół ProcessForce. Zamiast mówić "Moduł Posiada Funkcję X", komunikujemy "Redukcja Przestojów o 15% z ProcessForce". Wdrożenie interaktywnych kalkulatorów ROI na stronie docelowej.</p>
+                    </div>
+                    
+                    <div class="timeline-node">
+                        <h3 class="text-xl font-bold text-white mb-2">2. Employee Advocacy (Ludzkie Oblicze)</h3>
+                        <p class="text-slate-400 text-sm">Firmy B2B kupują od ekspertów, nie od logo. Wytypowanie 3 ambasadorów wewnątrz CompuTec (konsultanci, zarząd) do regularnego dzielenia się ekspercką wiedzą z wdrożeń na prywatnych kontach LinkedIn.</p>
+                    </div>
+                    
+                    <div class="timeline-node">
+                        <h3 class="text-xl font-bold text-white mb-2">3. Wąska Specjalizacja (Niche Dominance)</h3>
+                        <p class="text-slate-400 text-sm">Unikanie kosztownej walki na ogólne hasło "SAP B1". Pozycjonowanie się jako absolutny lider wdrażania SAP B1 <strong>dla produkcji</strong>. Tworzenie dedykowanych raportów branżowych ("Stan cyfryzacji produkcji 2026").</p>
+                    </div>
+
+                    <div class="timeline-node">
+                        <h3 class="text-xl font-bold text-white mb-2">4. Synergia Partnerska (Co-marketing)</h3>
+                        <p class="text-slate-400 text-sm">Nawiązywanie strategicznych partnerstw z dostawcami maszyn przemysłowych i automatyki (Industry 4.0). Organizacja wspólnych webinarów prezentujących integrację sprzętu z systemem CompuTec PDC.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const wrapLabelLogic = (label) => {
+            if (label.length <= 16) return label;
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 <= 16) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        };
+
+        const globalTooltipConfig = {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                },
+                backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                titleFont: { family: 'Poppins', size: 14 },
+                bodyFont: { family: 'Poppins', size: 13 },
+                padding: 12
+            }
+        };
+
+        const initRadarChart = () => {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            const rawLabels = ['Widoczność SEO (Artykuły/Blog)', 'Webinary i Eventy Edukacyjne', 'Social Selling (Eksperci LinkedIn)', 'Case Studies i Dowody ROI', 'Własne Produkty (IP) / Przewaga'];
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: rawLabels.map(wrapLabelLogic),
+                    datasets: [
+                        {
+                            label: 'Średnia Konkurencji',
+                            data: [8, 8, 7, 9, 4],
+                            backgroundColor: 'rgba(148, 163, 184, 0.2)',
+                            borderColor: 'rgba(100, 116, 139, 1)',
+                            pointBackgroundColor: 'rgba(100, 116, 139, 1)',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'CompuTec Obecnie',
+                            data: [5, 6, 4, 7, 10],
+                            backgroundColor: 'rgba(29, 78, 216, 0.4)',
+                            borderColor: 'rgba(29, 78, 216, 1)',
+                            pointBackgroundColor: 'rgba(29, 78, 216, 1)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...globalTooltipConfig,
+                        legend: { position: 'bottom', labels: { font: { family: 'Poppins' }, color: '#334155' } }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: { font: { family: 'Poppins', size: 11, weight: '600' }, color: '#475569' },
+                            ticks: { min: 0, max: 10, stepSize: 2, display: false }
+                        }
+                    }
+                }
+            });
+        };
+
+        const initDoughnutChart = () => {
+            const ctx = document.getElementById('doughnutChart').getContext('2d');
+            const rawLabels = ['Treści Eksperckie i SEO', 'Wydarzenia i Webinary', 'Płatne Kampanie Ads', 'Social Media (Firmowe)', 'Inne (PR, Offline)'];
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: rawLabels.map(wrapLabelLogic),
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: [
+                            '#1d4ed8', 
+                            '#0f766e', 
+                            '#f97316', 
+                            '#eab308', 
+                            '#64748b'  
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        ...globalTooltipConfig,
+                        legend: { position: 'right', labels: { font: { family: 'Poppins', size: 12 } } }
+                    }
+                }
+            });
+        };
+
+        const initBarChart = () => {
+            const ctx = document.getElementById('barChart').getContext('2d');
+            const rawLabels = ['Rekomendacje i Partnerzy', 'Organiczne Wyszukiwania (SEO)', 'Webinary Eksperckie', 'LinkedIn Social Selling', 'Zimne Maile i Telefony'];
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: rawLabels.map(wrapLabelLogic),
+                    datasets: [{
+                        label: 'Współczynnik Konwersji (%)',
+                        data: [14.5, 9.2, 7.8, 4.5, 1.2],
+                        backgroundColor: '#0f766e',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        ...globalTooltipConfig,
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            title: { display: true, text: 'Konwersja (%)', font: { family: 'Poppins' } }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'Poppins', size: 11, weight: '600' }, color: '#475569' }
+                        }
+                    }
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initRadarChart();
+            initDoughnutChart();
+            initBarChart();
+        });
+    </script>
+</body>
+</html>
